@@ -1,0 +1,8 @@
+# ipynotebook auto-save temp
+.ipynb_checkpoints/
+
+# ignore PyCharm or DataSpell temp config
+.idea/
+
+# ignore vscode temp config
+.vscode/
