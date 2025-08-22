@@ -47,7 +47,7 @@ jobs:
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
-                pip wheel $GITHUB_WORKSPACE/opencv-python/ --verbose
+                pip wheel $GITHUB_WORKSPACE/opencv-python --verbose
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
