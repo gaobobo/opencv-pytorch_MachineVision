@@ -56,7 +56,7 @@ jobs:
               uses: peter-evans/create-pull-request@v7
               with: 
                 path: main_repo/
-                branch: actions/opencv-build
+                branch: actions/opencv-build-${{matrix.build-platform}}
                 title: "feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
                 body: |
                     > [!IMPORTANT]
