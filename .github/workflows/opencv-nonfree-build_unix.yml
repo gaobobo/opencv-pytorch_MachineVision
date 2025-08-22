@@ -1,4 +1,3 @@
-name: opencv-nonfree-build
 run-name: Build opencv-contrib-python wheel with non-free features and create PR
 
 on: 
@@ -19,16 +18,20 @@ jobs:
     build:
         strategy:
             matrix:
-                build-platform: [ubuntu-24.04, windows-2025, macos-15-large, macos-15]
+                build-platform: [ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-15]
 
 
         runs-on: ${{matrix.build-platform}}
+
+        permissions:
+            contents: write
+            pull-requests: write
 
         env:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
-            PIP_WHEEL_DIR: /repos/main_repo/${{inputs.save-path}}
+            PLATFORM: ${{matrix.build-platform}}
 
         steps:
             - name: Checkout opencv-python repo
@@ -37,22 +40,22 @@ jobs:
                 repository: 'opencv/opencv-python'
                 ref: ${{inputs.opencv-python-repo-ref}}
                 submodules: true
-                path: /repos/opencv-python/
+                path: opencv-python/
 
             - name: Checkout this repo
               uses: actions/checkout@v4
               with:
-                path: /repos/main_repo/
+                path: main_repo/
 
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
-                pip wheel /repos/opencv-python/ --verbose
+                pip wheel $GITHUB_WORKSPACE/opencv-python/ --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with: 
-                path: /repos/main_repo/
+                path: main_repo/
                 branch: actions/opencv-build
                 title: "[Actions]feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
                 commit-message: "feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
