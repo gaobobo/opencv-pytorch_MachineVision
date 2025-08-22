@@ -19,7 +19,7 @@ jobs:
     build:
         strategy:
             matrix:
-                build-platform: [ubuntu-24.04, windows-2025, macos-13, macos-15]
+                build-platform: [ubuntu-24.04, macos-13, macos-15]
 
 
         runs-on: ${{matrix.build-platform}}
