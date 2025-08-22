@@ -60,8 +60,7 @@ jobs:
                     root_path=$GITHUB_WORKSPACE\a\opencv-pytorch_MachineVision\opencv-pytorch_MachineVision\
                 fi
 
-                cd $GITHUB_WORKSPACE/a/opencv-python
-                pip wheel . --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
+                pip wheel ${root_path}/opencv-python/ --verbose -w ${root_path}/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
