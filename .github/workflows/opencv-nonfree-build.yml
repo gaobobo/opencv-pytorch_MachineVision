@@ -32,7 +32,6 @@ jobs:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
-            PIP_WHEEL_DIR: $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
         steps:
             - name: Checkout opencv-python repo
@@ -53,7 +52,7 @@ jobs:
                 pip install --upgrade pip  
 
                 cd $GITHUB_WORKSPACE/opencv-python
-                pip wheel . --verbose
+                pip wheel . --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
