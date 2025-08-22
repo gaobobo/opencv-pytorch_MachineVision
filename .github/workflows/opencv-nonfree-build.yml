@@ -19,7 +19,7 @@ jobs:
     build:
         strategy:
             matrix:
-                build-platform: [ubuntu-24.04, macos-13, macos-15]
+                build-platform: [ubuntu-24.04, windows-2025, macos-13, macos-15]
 
 
         runs-on: ${{matrix.build-platform}}
@@ -50,7 +50,9 @@ jobs:
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
-                pip wheel $GITHUB_WORKSPACE/opencv-python --verbose
+
+                cd $GITHUB_WORKSPACE/opencv-python
+                pip wheel . --verbose
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
