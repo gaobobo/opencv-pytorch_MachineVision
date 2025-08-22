@@ -40,18 +40,18 @@ jobs:
                 repository: 'opencv/opencv-python'
                 ref: ${{inputs.opencv-python-repo-ref}}
                 submodules: true
-                path: opencv-python/
+                path: a/opencv-python/
 
             - name: Checkout this repo
               uses: actions/checkout@v4
               with:
-                path: main_repo/
+                path: a/main_repo/
 
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
 
-                cd $GITHUB_WORKSPACE/opencv-python
+                cd $GITHUB_WORKSPACE/a/opencv-python
                 pip wheel . --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
