@@ -32,6 +32,7 @@ jobs:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
+            PLATFORM: ${{matrix.build-platform}}
 
         steps:
             - name: Checkout opencv-python repo
@@ -40,19 +41,27 @@ jobs:
                 repository: 'opencv/opencv-python'
                 ref: ${{inputs.opencv-python-repo-ref}}
                 submodules: true
-                path: a/opencv-python/
+                path: opencv-python/
 
             - name: Checkout this repo
               uses: actions/checkout@v4
               with:
-                path: a/main_repo/
+                path: main_repo/
 
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
 
+                root_path=''
+                if [[ $PLATFORM =~ ^windows ]]; 
+                then 
+                    root_path=$GITHUB_WORKSPACE
+                else
+                    root_path=$GITHUB_WORKSPACE\a\opencv-pytorch_MachineVision\opencv-pytorch_MachineVision\
+                fi
+
                 cd $GITHUB_WORKSPACE/a/opencv-python
-                pip wheel . --verbose -w $GITHUB_WORKSPACE/a/main_repo/${{inputs.save-path}}
+                pip wheel . --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
