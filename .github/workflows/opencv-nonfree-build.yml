@@ -28,7 +28,7 @@ jobs:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
-            PIP_WHEEL_DIR: /repos/main_repo/${{inputs.save-path}}
+            PIP_WHEEL_DIR: $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
 
         steps:
             - name: Checkout opencv-python repo
@@ -37,22 +37,22 @@ jobs:
                 repository: 'opencv/opencv-python'
                 ref: ${{inputs.opencv-python-repo-ref}}
                 submodules: true
-                path: /repos/opencv-python/
+                path: opencv-python/
 
             - name: Checkout this repo
               uses: actions/checkout@v4
               with:
-                path: /repos/main_repo/
+                path: main_repo/
 
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
-                pip wheel /repos/opencv-python/ --verbose
+                pip wheel $GITHUB_WORKSPACE/opencv-python/ --verbose
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with: 
-                path: /repos/main_repo/
+                path: main_repo/
                 branch: actions/opencv-build
                 title: "[Actions]feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
                 commit-message: "feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
