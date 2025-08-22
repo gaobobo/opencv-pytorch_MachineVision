@@ -1,4 +1,3 @@
-name: opencv-nonfree-build
 run-name: Build opencv-contrib-python wheel with non-free features and create PR
 
 on: 
