@@ -25,6 +25,7 @@ jobs:
         runs-on: ${{matrix.build-platform}}
 
         permissions:
+            contents: write
             pull-requests: write
 
         env:
