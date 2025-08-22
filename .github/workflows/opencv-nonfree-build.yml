@@ -1,0 +1,58 @@
+name: opencv-nonfree-build
+run-name: Build opencv-contrib-python wheel with non-free features and create PR
+
+on: 
+    workflow_dispatch:
+        inputs:
+            opencv-python-repo-ref:
+                description: "Checkout opencv/opencv-python repos' ref, including branch, SHA, tag."
+                required: true
+                type: string
+            
+            save-path:
+                description: "the path relative this repo that python wheels save to"
+                required: true
+                type: string
+            
+jobs: 
+
+    build:
+        strategy:
+            matrix:
+                build-platform: [ubuntu-24.04, windows-2025, macos-15-large, macos-15]
+
+
+        runs-on: ${{matrix.build-platform}}
+
+        env:
+            ENABLE_CONTRIB: 1
+            ENABLE_HEADLESS: 1
+            CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
+            PIP_WHEEL_DIR: /repos/main_repo/${{inputs.save-path}}
+
+        steps:
+            - name: Checkout opencv-python repo
+              uses: actions/checkout@v4
+              with:
+                repository: 'opencv/opencv-python'
+                ref: ${{inputs.opencv-python-repo-ref}}
+                submodules: true
+                path: /repos/opencv-python/
+
+            - name: Checkout this repo
+              uses: actions/checkout@v4
+              with:
+                path: /repos/main_repo/
+
+            - name: Build opencv-contrib-python-headless
+              run: |
+                pip install --upgrade pip  
+                pip wheel /repos/opencv-python/ --verbose
+
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v7
+              with: 
+                path: /repos/main_repo/
+                branch: actions/opencv-build
+                title: "[Actions]feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
+                commit-message: "feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
