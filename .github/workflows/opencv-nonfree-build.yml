@@ -24,6 +24,9 @@ jobs:
 
         runs-on: ${{matrix.build-platform}}
 
+        permissions:
+            pull-requests: write
+
         env:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
