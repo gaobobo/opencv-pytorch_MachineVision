@@ -15,8 +15,8 @@ on:
             
 jobs: 
 
-    build-windows-x86:
-        runs-on: windows-2025
+    build-windows-arm:
+        runs-on: windows-arm
 
         permissions:
             actions: write
@@ -27,7 +27,7 @@ jobs:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
-            PLATFORM: windows-2025
+            PLATFORM: windows-arm
 
         steps:
             - name: Checkout opencv-python repo
