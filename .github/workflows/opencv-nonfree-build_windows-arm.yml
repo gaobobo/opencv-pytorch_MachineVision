@@ -15,7 +15,7 @@ on:
             
 jobs: 
 
-    build-windows-x86:
+    build-windows-arm:
         runs-on: windows-2025
 
         permissions:
