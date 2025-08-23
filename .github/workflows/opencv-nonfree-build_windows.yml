@@ -33,7 +33,6 @@ jobs:
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
             PLATFORM: ${{matrix.build-platform}}
-            WORKSPACE: "D:/a/opencv-pytorch_MachineVision/opencv-pytorch_MachineVision"
 
         steps:
             - name: Checkout opencv-python repo
@@ -52,7 +51,9 @@ jobs:
             - name: Build opencv-contrib-python-headless
               run: |
                 pip install --upgrade pip  
-                pip wheel $WORKSPACE/opencv-python/ --verbose -w $WORKSPACE/main_repo/${{inputs.save-path}}
+                pip wheel \
+                    D:/a/${{ github.repository }}/${{ github.repository }}/opencv-python/ \
+                    --verbose -w D:/a/${{ github.repository }}/${{ github.repository }}/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
