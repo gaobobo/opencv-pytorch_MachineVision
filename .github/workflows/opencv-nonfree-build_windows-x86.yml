@@ -27,7 +27,6 @@ jobs:
             ENABLE_CONTRIB: 1
             ENABLE_HEADLESS: 1
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
-            PLATFORM: windows-2025
 
         steps:
             - name: Checkout opencv-python repo
@@ -63,5 +62,5 @@ jobs:
                     Add opencv-contrib-python-headless package for windows-x86 platform, with non-free package
                     and extra features.
                     
-                    To learn more, visit [Actions page](https://github.com/gaobobo/opencv-pytorch_MachineVision/actions/workflows/opencv-nonfree-build_unix.yml).
+                    To learn more, visit [Actions page](https://github.com/gaobobo/opencv-pytorch_MachineVision/actions/workflows/opencv-nonfree-build_windows-x86.yml).
                 commit-message: "feat: add opencv-contrib-python-headless wheel with windows-x86"
