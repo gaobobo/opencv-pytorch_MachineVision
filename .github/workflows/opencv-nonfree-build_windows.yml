@@ -50,7 +50,7 @@ jobs:
 
             - name: Build opencv-contrib-python-headless
               run: |
-                REPO_NAME=$(echo ${{ github.repository }} | cut -d '/' -f 2)
+                $REPO_NAME = "gaobobo/opencv-pytorch_MachineVision" -split '/' | Select-Object -Last 1
                 pip install --upgrade pip  
                 pip wheel "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" -v -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}"
 
