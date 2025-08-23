@@ -53,7 +53,7 @@ jobs:
                 REPO_NAME=$(echo ${{ github.repository }} | cut -d '/' -f 2)
                 pip install --upgrade pip  
                 pip wheel 
-                    "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" "--verbose" -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}
+                    "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
