@@ -9,7 +9,12 @@ on:
                 type: string
             
             save-path:
-                description: "the path relative this repo that python wheels save to"
+                description: "The path relative this repo that python wheels save to, like build/opencv-nonfree/"
+                required: true
+                type: string
+
+            python-version:
+                description: "python version that build environment, like 3.9 or 3.12. This will affect adapted version."
                 required: true
                 type: string
             
@@ -29,6 +34,11 @@ jobs:
             CMAKE_ARGS: "-DOPENCV_ENABLE_NONFREE=ON"
 
         steps:
+            - name: Init Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{inputs.python-version}}
+
             - name: Checkout opencv-python repo
               uses: actions/checkout@v4
               with:
@@ -53,7 +63,7 @@ jobs:
               with: 
                 path: main_repo/
                 branch: actions/opencv-build-win-x86
-                title: "feat: add opencv-contrib-python-headless wheel with windows-x86"
+                title: "feat: add opencv-contrib-python-headless wheel with windows-x86, adapated Python ${{inputs.python-version}}"
                 body: |
                     > [!IMPORTANT]
                     > 
