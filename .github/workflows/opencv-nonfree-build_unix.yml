@@ -68,7 +68,7 @@ jobs:
               with: 
                 path: main_repo/
                 branch: actions/opencv-build-${{matrix.build-platform}}
-                title: "feat: add opencv-contrib-python-headless wheel with ${{matrix.build-platform}}"
+                title: "feat: add opencv-contrib-python-headless wheel with windows-x86, adapated Python ${{inputs.python-version}}"
                 body: |
                     > [!IMPORTANT]
                     > 

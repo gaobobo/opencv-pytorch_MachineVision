@@ -63,7 +63,7 @@ jobs:
               with: 
                 path: main_repo/
                 branch: actions/opencv-build-win-x86
-                title: "feat: add opencv-contrib-python-headless wheel with windows-x86"
+                title: "feat: add opencv-contrib-python-headless wheel with windows-x86, adapated Python ${{inputs.python-version}}"
                 body: |
                     > [!IMPORTANT]
                     > 
