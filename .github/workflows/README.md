@@ -43,7 +43,7 @@ dependencies:
 - 首先，将 [opencv-nonfree-build_unix.yml](./opencv-nonfree-build_unix.yml) 和 [opencv-nonfree-build_win-x64.yml](./opencv-nonfree-build_win-x64.yml)
   置于仓库主分支的 `/.github/workflows` 下，并将更改推送至 GitHub 。
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > 
 > - 不能放置于任何的子目录，只能是 `/.github/workflows` 下。
 > - 必须在主分支存在该文件。如果需要测试，请向主分支推送空文件并稍后将更改合并到主分支。
