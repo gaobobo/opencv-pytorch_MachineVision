@@ -13,6 +13,11 @@ on:
                 required: true
                 type: string
             
+            python-version:
+                description: "python version that build environment, like 3.9 or 3.12."
+                required: true
+                type: string
+            
 jobs: 
 
     build:
@@ -35,6 +40,11 @@ jobs:
             PLATFORM: ${{matrix.build-platform}}
 
         steps:
+            - name: Init Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{inputs.python-version}}
+
             - name: Checkout opencv-python repo
               uses: actions/checkout@v4
               with:
