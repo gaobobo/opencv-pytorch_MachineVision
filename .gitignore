@@ -6,3 +6,6 @@
 
 # ignore vscode temp config
 .vscode/
+
+# ignore un-zip datasets
+/6_CNN-ImgClassification/datasets/**/*.gz
