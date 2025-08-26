@@ -84,8 +84,6 @@ dependencies:
   - 本地源：指向构建输出的目录，如 `./path/to/local` 或 `file://./path/to/local`；
   - HTML路径：包含指向二进制文件的链接。只解析文件中的链接。
 
-Here's the English translation:
-
 ---
 
 # Building OpenCV with Non-Free Features
@@ -120,12 +118,12 @@ Please refer to the [opencv-python build guide](https://github.com/opencv/opencv
 
 ### Building with GitHub Actions
 
-> \[!IMPORTANT]
+> [!IMPORTANT]
 > This guide applies to GitHub Actions and not other platforms.
 
 * First, place the files [opencv-nonfree-build\_unix.yml](./opencv-nonfree-build_unix.yml) and [opencv-nonfree-build\_win-x64.yml](./opencv-nonfree-build_win-x64.yml) into the `/.github/workflows` directory of the main branch and push the changes to GitHub.
 
-> \[IMPORTANT]
+> [!IMPORTANT]
 >
 > * These files must be placed in `/.github/workflows` and not in any subdirectory.
 > * The files must exist on the main branch. To test, you can push an empty file to the main branch and later merge it.
@@ -136,7 +134,7 @@ Please refer to the [opencv-python build guide](https://github.com/opencv/opencv
   * `opencv-nonfree-build_unix.yml` is for Linux x64, Linux ARM, MacOS Intel, and MacOS M platforms.
   * `opencv-nonfree-build_win-x64.yml` is for Windows x64 platforms.
 
-> \[!IMPORTANT]
+> [!IMPORTANT]
 >
 > * This repository does not currently provide packages for Windows ARM platforms due to issues with automated builds. Please refer to the [opencv-python build guide](https://github.com/opencv/opencv-python/tree/4.x?tab=readme-ov-file#manual-builds) and attempt to build manually.
 > * The built packages will be headless, i.e., `opencv-contrib-python-headless`.
