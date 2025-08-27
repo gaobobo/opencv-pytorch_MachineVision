@@ -18,6 +18,11 @@ on:
                 required: true
                 type: string
             
+            package-name-suffix:
+                description: "Package name's suffix, like opencv-python<SUFFIX>. Recommand start with -, like -nonfree"
+                required: false
+                type: string
+            
 jobs: 
 
     build-windows-x64:
@@ -55,7 +60,12 @@ jobs:
             - name: Build opencv-contrib-python-headless
               run: |
                 $REPO_NAME = "gaobobo/opencv-pytorch_MachineVision" -split '/' | Select-Object -Last 1
-                pip install --upgrade pip  
+
+                $content = Get-Content "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/setup.py"
+                $content[90] = '    package_name += "${{inputs.package-name-suffix}}"' + "`r`n" + $content[90]
+                $content | Set-Content "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/setup.py"
+
+                pip install --upgrade pip
                 pip wheel "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" -v -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}"
 
             - name: Create Pull Request
