@@ -35,8 +35,8 @@ jobs:
 
             - name: Build ultralytics
               run: |
-                sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
-                sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
+                # sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
+                # sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
                 
                 # pip install --upgrade pip
                 # pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
