@@ -19,6 +19,7 @@ on:
                 description: "python version that build environment, like 3.9 or 3.12. This will affect adapted version."
                 required: true
                 type: string
+                default: "3.12"
             
             package-name-suffix:
                 description: "Package name's suffix, like opencv-python<SUFFIX>. Recommand start with -, like -nonfree"
