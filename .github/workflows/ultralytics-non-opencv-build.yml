@@ -1,4 +1,4 @@
-run-name: Build opencv-contrib-python wheel with non-free features and create PR
+run-name: Build ultralytics with non-opencv dependence and create PR
 
 on: 
     workflow_dispatch:
