@@ -55,9 +55,8 @@ jobs:
                 sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
                 
-                cd ${GITHUB_WORKSPACE}
                 pip install --upgrade pip
-                pip wheel ./ultralytics/ --verbose -w ./main_repo/${{inputs.save-path}} --no-deps
+                pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
