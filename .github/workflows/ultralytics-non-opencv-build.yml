@@ -53,7 +53,7 @@ jobs:
               uses: peter-evans/create-pull-request@v7
               with: 
                 add-paths: |
-                  *.whl
+                  new_*.whl
                 path: main_repo/
                 branch: actions/ultralytics-non-opencv
                 title: "feat: add ultralytics-non-opencv wheel, adapated Python ${{inputs.python-version}}"
