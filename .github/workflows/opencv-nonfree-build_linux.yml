@@ -76,8 +76,9 @@ jobs:
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with: 
+                add-paths: ${{inputs.save-path}}/opencv-*
                 path: main_repo/
-                add-paths: ${{inputs.save-path}}/*
+
                 branch: actions/opencv-build-${{matrix.build-platform}}
                 title: "feat: add OpenCV python wheels with ${{matrix.build-platform}}, adapated Python ${{inputs.python-version}}"
                 body: |
