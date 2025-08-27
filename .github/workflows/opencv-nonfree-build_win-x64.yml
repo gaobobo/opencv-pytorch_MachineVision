@@ -70,12 +70,12 @@ jobs:
                 $content | Set-Content "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/setup.py"
 
                 pip install --upgrade pip
-                pip wheel "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" -v -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}"
+                pip wheel "D:/a/${REPO_NAME}/${REPO_NAME}/opencv-python/" -v -w "D:/a/${REPO_NAME}/${REPO_NAME}/main_repo/${{inputs.save-path}}" --no-deps
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with:
-                add-paths: ${{inputs.save-path}}/opencv-*.whl
+                add-paths: opencv_*.whl
                 path: main_repo/
                 branch: actions/opencv-build-win-x64
                 title: "feat: add OpenCV python wheels with windows-x64, adapated Python ${{inputs.python-version}}"

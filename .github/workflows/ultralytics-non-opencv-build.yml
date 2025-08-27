@@ -1,4 +1,4 @@
-run-name: Build opencv-contrib-python wheel with non-free features and create PR
+run-name: Build ultralytics with non-opencv dependence and create PR
 
 on: 
     workflow_dispatch:
@@ -16,7 +16,7 @@ on:
                 default: "build/ultralytics-non-opencv/"
 
             python-version:
-                description: "python version that build environment, like 3.9 or 3.12. This will affect adapted version."
+                description: "python version that build environment, like 3.9 or 3.12"
                 required: true
                 type: string
                 default: "3.12"
@@ -54,15 +54,15 @@ jobs:
               run: |
                 sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
-
+                
                 pip install --upgrade pip
-                pip wheel $GITHUB_WORKSPACE/ultralytics/ --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
+                pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with: 
                 path: main_repo/
-                add-paths: ${{inputs.save-path}}/ultralytics-*.whl
+                add-paths: ultralytics_*.whl
                 branch: actions/ultralytics-non-opencv
                 title: "feat: add ultralytics-non-opencv wheel, adapated Python ${{inputs.python-version}}"
                 body: |
