@@ -47,7 +47,7 @@ jobs:
                 # pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
 
                 mkdir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}}/
-                touch ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}}/new_file.wh
+                touch ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}}/new_file.whl
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
