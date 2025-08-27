@@ -7,21 +7,24 @@ on:
                 description: "Checkout opencv/opencv-python repos' ref, including branch, SHA, tag."
                 required: true
                 type: string
+                default: "4.x"
             
             save-path:
                 description: "The path relative this repo that python wheels save to, like build/opencv-nonfree/"
                 required: true
                 type: string
-            
+                default: "build/opencv-nonfree/"
+
             python-version:
                 description: "python version that build environment, like 3.9 or 3.12. This will affect adapted version."
                 required: true
                 type: string
-
+            
             package-name-suffix:
                 description: "Package name's suffix, like opencv-python<SUFFIX>. Recommand start with -, like -nonfree"
                 required: false
                 type: string
+                default: "-nonfree"
             
 jobs: 
 
