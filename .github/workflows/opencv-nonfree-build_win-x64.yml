@@ -74,7 +74,8 @@ jobs:
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
-              with: 
+              with:
+                add-paths: ${{inputs.save-path}}/* 
                 path: main_repo/
                 branch: actions/opencv-build-win-x64
                 title: "feat: add OpenCV python wheels with windows-x64, adapated Python ${{inputs.python-version}}"
