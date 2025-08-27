@@ -72,7 +72,7 @@ jobs:
                     package_name += "${{inputs.package-name-suffix}}"
                 ' $GITHUB_WORKSPACE/opencv-python/setup.py
                 pip install --upgrade pip
-                pip wheel $GITHUB_WORKSPACE/opencv-python/ --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}}
+                pip wheel $GITHUB_WORKSPACE/opencv-python/ --verbose -w $GITHUB_WORKSPACE/main_repo/${{inputs.save-path}} --no-deps
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
