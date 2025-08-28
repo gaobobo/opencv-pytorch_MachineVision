@@ -58,8 +58,8 @@ jobs:
                 pip install --upgrade pip
                 pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
                 
-                git add -C ultralytics/ ultralytics/pyproject.toml
-                git diff -C ultralytics/ --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
+                git -C ultralytics/ add --all
+                git -C ultralytics/ diff --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
