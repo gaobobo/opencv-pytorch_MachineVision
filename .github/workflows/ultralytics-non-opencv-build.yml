@@ -55,7 +55,7 @@ jobs:
                 sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
                 
-                ls ${GITHUB_WORKSPACE}/ultralytics/ -l
+                ls ${GITHUB_WORKSPACE}/ultralytics/.git/
                 
                 git add -C ${GITHUB_WORKSPACE}/ultralytics/ ultralytics/pyproject.toml
                 git diff -C ${GITHUB_WORKSPACE}/ultralytics/ --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
