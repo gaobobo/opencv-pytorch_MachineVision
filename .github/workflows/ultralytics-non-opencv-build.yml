@@ -57,8 +57,8 @@ jobs:
                 
                 ls ${GITHUB_WORKSPACE}/ultralytics/.git/
                 
-                git -C ${GITHUB_WORKSPACE}/ultralytics/ add  ultralytics/pyproject.toml
-                git -C ${GITHUB_WORKSPACE}/ultralytics/ diff --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
+                git -C ultralytics/ add  --all
+                git -C ultralytics/ diff --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
