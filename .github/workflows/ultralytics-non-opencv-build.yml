@@ -55,6 +55,9 @@ jobs:
                 sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
                 
+                git -C ultralytics/ commit -am "Remove OpenCV dependence and rename to ultralytics-non-opencv"
+                git -C ultralytics/ format-patch -1 --subject-prefix="ultralytics-non-opencv" -o main_repo/${{inputs.save-path}}
+                
                 pip install --upgrade pip
                 pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
 
@@ -64,6 +67,7 @@ jobs:
                 path: main_repo/
                 add-paths: |
                   *.whl
+                  *.patch
                 branch: actions/ultralytics-non-opencv
                 title: "feat: add ultralytics-non-opencv wheel"
                 body: |
