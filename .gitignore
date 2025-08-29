@@ -9,3 +9,12 @@
 
 # ignore un-zip datasets
 /6_CNN-ImgClassification/datasets/**/*.gz
+
+# ignore train outputs
+/7_YOLO-FeatureDetection/outputs/*
+
+# ignore auto-unzip datasets
+/7_YOLO-FeatureDetection/datasets/*
+!/7_YOLO-FeatureDetection/datasets/predicts/*
+!/7_YOLO-FeatureDetection/datasets/*.yml
+!/7_YOLO-FeatureDetection/datasets/*.zip
