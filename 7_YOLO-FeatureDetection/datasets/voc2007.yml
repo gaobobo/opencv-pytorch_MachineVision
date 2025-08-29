@@ -1,0 +1,108 @@
+path: ../7_YOLO-FeatureDetection/datasets/voc2007/
+train: images/train2007/
+val: images/val2007/
+test:
+
+
+# Classes
+names:
+  0: aeroplane
+  1: bicycle
+  2: bird
+  3: boat
+  4: bottle
+  5: bus
+  6: car
+  7: cat
+  8: chair
+  9: cow
+  10: diningtable
+  11: dog
+  12: horse
+  13: motorbike
+  14: person
+  15: pottedplant
+  16: sheep
+  17: sofa
+  18: train
+  19: tvmonitor
+
+
+download: |
+  from pathlib import Path
+  from zipfile import ZipFile
+  import shutil
+  import xml.etree.ElementTree as ET
+  
+  train_ratio = 0.8
+  
+  root_dir = Path(yaml['path'])
+  zip_file = list((root_dir / '..').glob('[Vv][Oo][Cc]*2007*.zip'))
+  
+  if len(zip_file) == 0: 
+      raise RuntimeError(f"Not found 'VOC2007.zip' at {root_dir}."
+                          f"在{root_dir}没有发现文件'VOC2007.zip'。")
+  
+  zip_file = zip_file[0]
+  raw_data = root_dir / '_raw-voc2007'
+  
+  with ZipFile(zip_file) as zip:
+      zip.extractall(raw_data)
+  
+  train_images_path = root_dir / 'images' / 'train2007'
+  val_images_path = root_dir / 'images' / 'val2007'
+  train_labels_path = root_dir / 'labels' / 'train2007'
+  val_labels_path = root_dir / 'labels' / 'val2007'
+  
+  
+  [path.mkdir(parents=True, exist_ok=True) for path in [train_images_path, val_images_path,
+                                                        train_labels_path, val_labels_path]]
+  
+  
+  dataset_inputs = list((raw_data / 'JPEGImages').glob('*.jpg'))
+  
+  size = int(len(dataset_inputs) * train_ratio)
+  train_images = dataset_inputs[:size]
+  val_images = dataset_inputs[size:]
+  
+  def process_images(images, images_path, labels_path):
+      """处理图像和标签的通用函数"""
+      for image in images:
+  
+          shutil.copyfile(image, images_path / image.name)
+          
+          xml_labels = ET.parse(raw_data / 'Annotations' / image.with_suffix('.xml').name).getroot()
+          
+          image_size = (
+              int(xml_labels.find('size').find('width').text),
+              int(xml_labels.find('size').find('height').text)
+          )
+          
+          convert_size = lambda size, x, y: (x * 1 / size[0], y * 1 / size[1])
+          
+          
+          label_file = labels_path / image.with_suffix('.txt').name
+          
+          with open(label_file, 'w') as file:
+              for obj in xml_labels.iter('object'):
+  
+                  class_name = obj.findtext('name')
+                  object_index = list(yaml['names'].values()).index(class_name)
+                  
+                  xmin = int(obj.find('bndbox').find('xmin').text)
+                  xmax = int(obj.find('bndbox').find('xmax').text)
+                  ymin = int(obj.find('bndbox').find('ymin').text)
+                  ymax = int(obj.find('bndbox').find('ymax').text)
+                  
+                  x_center, y_center = convert_size(image_size, 
+                                                  (xmin + xmax) / 2,
+                                                  (ymin + ymax) / 2)
+                  x_size, y_size = convert_size(image_size, 
+                                              xmax - xmin,
+                                              ymax - ymin)
+                  
+                  file.write(f"{object_index} {x_center} {y_center} {x_size} {y_size}\n")
+  
+  
+  process_images(train_images, train_images_path, train_labels_path)
+  process_images(val_images, val_images_path, val_labels_path)
