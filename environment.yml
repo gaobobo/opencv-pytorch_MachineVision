@@ -1,0 +1,50 @@
+# Create conda environment for notebooks.
+# ==========================================================================
+#
+# To install, run `conda env -f ./environment.yml`. Use `-n` to specific a
+# name, otherwise use default `opencv-pytorch_MachineVision` .
+
+name: opencv-pytorch_MachineVision
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - notebook==7.4.5
+  - python==3.12
+  - pip
+  - pip:
+      # All packages depend on the numpy need to install from the single source.
+      # Otherwise, it will conflict because of using mix pre-compiled binary sources.
+      - matplotlib==3.10.5
+      - pandas==2.3.2
+
+      # Code insight support
+      - pandas-stubs==2.3.2.250827
+
+      # Default to install CPU PyTorch version. To install a GPU version,
+      # visit (Get-started PyTorch)[https://pytorch.org/get-started/locally/] .
+      - torch==2.8.0
+      - torchvision==0.23.0
+
+      # matplotlib interactive widgets support
+      - ipympl==0.9.7
+
+      # .h5 file support
+      - h5py==3.14.0
+
+      # PIL or pillow
+      - pillow==11.3.0
+
+      # Install from the local source.
+      - --find-links ./build/opencv-nonfree/
+      - --find-links ./build/ultralytics-non-opencv/
+
+      # Install OpenCV with SURF and non-free features that pre-build. For more
+      # information, visit (workflows readme)[/.github/workflows/README.md] .
+      - opencv-contrib-python-headless-nonfree
+
+      # Because Ultralytics will install `opencv-python`, and this may cause conflict
+      # with `opencv-contrib-python` and any other OpenCV version. To solve this, use
+      # pre-build wheels that remove `opencv-python` dependence, and install OpenCV
+      # manually.
+      - ultralytics-non-opencv
