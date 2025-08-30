@@ -1,5 +1,9 @@
 # 机器视觉-OpenCV、PyTorch
 
+> [!TIP]
+>
+> For English, see the [second-half part](#machine-vision---opencv-pytorch)
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
 
 本仓库包含机器视觉作业 Jupyter Notebook 并保留了全部的运行结果，你可直接在线预览笔记本。
@@ -101,3 +105,100 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 ---
 
+# Machine Vision - OpenCV, PyTorch
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
+
+This repository contains machine vision assignments in Jupyter Notebook format, with all execution results preserved. You can preview the notebook directly online.
+
+Additionally, the repository offers an interactive environment via Binder. You can access it directly by clicking on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb), or open specific sections of the notebook in [index.ipynb](./index.ipynb).
+
+## Build and Run
+
+### Run Online
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
+An online running environment is provided. After accessing [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb), wait for the build to finish. Once completed, the Jupyter Notebook window will open automatically.
+
+### Run Locally
+
+To run locally, you need to clone the repository and install dependencies. The root directory of this repository provides a Conda environment configuration in [environment.yml](./environment.yml), which you can use to create the environment with the command:
+`conda env create -f ./environment.yml`. Use the `-n` option to specify the environment name, with the default being `opencv-pytorch_MachineVision`.
+
+> \[!TIP]
+>
+> An alternative [environment\_CN.yml](./environment_CN.yml) is provided, using the Tsinghua University open-source software mirror.
+
+Some dependencies in this repository are custom-built versions and are [included in the repository](./build/).
+
+Steps:
+
+* Install Git. It should be pre-installed on Linux systems. For other systems, download it from [Git Download](https://git-scm.com/downloads).
+* Clone the repository to your local system with `git clone https://github.com/gaobobo/opencv-pytorch_MachineVision.git -b binder-release --depth 1`, or download the ZIP archive from the [GitHub repository page](https://github.com/gaobobo/opencv-pytorch_MachineVision).
+
+> \[!NOTE]
+>
+> Since this repository includes datasets and to avoid frequent pulls of [Git LFS](https://git-lfs.com/) files which may trigger [GitHub limits](https://docs.github.com/en/billing/concepts/product-billing/git-lfs#free-use-of-git-lfs), Git LFS is not used. As a result, cloning the entire repository may be slow. It is recommended to clone only the `binder-release` branch and use shallow cloning to avoid excessive local repository size and speed up the cloning process.
+
+* Install [Anaconda](https://www.anaconda.com/download/success) or [miniconda](https://www.anaconda.com/download/success).
+* `cd` to the root directory of the repository.
+* Open the command line and run `conda env create -f ./environment.yml` to create the environment and install required dependencies.
+* Use `conda activate opencv-pytorch_MachineVision` to activate the environment.
+* Enter `ipython notebook` to run Jupyter Notebook.
+* In the browser window that opens, open [index.ipynb](./index.ipynb).
+
+> \[!IMPORTANT]
+>
+> On Windows, you need to first launch `Anaconda Prompt`, then run the `conda` commands in the terminal that opens.
+
+### Build Packages
+
+#### opencv-contrib-python-headless-nonfree
+
+This project uses the SURF algorithm, which is patented. Therefore, neither `opencv-contrib-python` nor `opencv-python` includes this algorithm.
+
+Thus, this repository has rebuilt the `opencv-contrib-python-headless-nonfree` package, which includes the SURF algorithm and other non-free features.
+
+The package for Python version 1.12 is available. Install it with the following command:
+
+```shell
+pip install opencv-contrib-python-headless --force-reinstall --no-index --find-links ./build/opencv-nonfree/
+```
+
+This repository also provides a simple automated build workflow. Please refer to [/.github/workflows/README.md](/.github/workflows/README.md) for instructions on how to use GitHub Actions to build automatically.
+
+#### ultralytics-non-opencv
+
+The `ultralytics` package provides a new CLI and Python API for YOLO models. However, the default `ultralytics` package installs `opencv-python` as a dependency, which may conflict with other versions of `opencv-python` already installed.
+
+Therefore, this repository has built a version of the `ultralytics` package that does not include the `opencv-python` dependency. Install it using the following command:
+
+```shell
+pip install ultralytics-non-opencv --force-reinstall --no-index --find-links ./build/ultralytics-non-free/
+```
+
+Don’t forget to install your favorite version of OpenCV. Of course, you can also use `opencv-contrib-python-headless-nonfree`:
+
+```shell
+pip install opencv-contrib-python-headless --force-reinstall --no-index --find-links ./build/opencv-nonfree/
+```
+
+This repository also provides a simple automated build workflow. Please refer to [/.github/workflows/README.md](/.github/workflows/README.md) for instructions on how to use GitHub Actions to build automatically.
+
+## Contributing to This Project
+
+This project is purely for coursework and does not consider contributions.
+
+## License
+
+This project is licensed under the [AGPL-3.0 License](./LICENSE). It includes third-party resources that may be licensed under different terms. Please refer to [LICENSE-THIRD-PART](./LICENSE-THIRD-PART) for more details.
+
+### `ultralytics-non-opencv` License Notice
+
+According to the [AGPL-3.0 License](https://github.com/ultralytics/ultralytics/blob/main/LICENSE), modified source code must be open-sourced.
+
+The modified source code is provided in patch `.patch` form. To obtain the full source code:
+
+* Clone the [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) repository. This repository is built based on the `v8.3.136` tag.
+* `cd` to the cloned repository directory.
+* Apply the patch using `git apply <TO-THIS-REPO>/build/ultralytics-non-opencv.patch`. The codebase should now match the modified source.
