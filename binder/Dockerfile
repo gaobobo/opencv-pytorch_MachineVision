@@ -1,1 +1,0 @@
-FROM ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
