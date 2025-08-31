@@ -1,0 +1,50 @@
+# 为笔记本创建 Conda 环境。
+# ==========================================================================
+#
+# 运行命令 `conda env -f ./environment.yml` 以安装。使用参数 `-n` 以指定名称，否则使用
+# 默认名称 `opencv-pytorch_MachineVision` 。
+
+name: opencv-pytorch_MachineVision
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - notebook==7.4.5
+  - python==3.12
+  - pip
+  - pip:
+      # 所有依赖 numpy 的包均需从单一来源安装。否则，会因混用预编译的二进制库而产生冲突。
+      - matplotlib==3.10.5
+      - pandas==2.3.2
+
+      # 代码感知支持
+      - pandas-stubs==2.3.2.250827
+
+      # 默认安装 CPU 版本的 PyTorch。访问 (Get-started PyTorch)[https://pytorch.org/get-started/locally/]
+      # 以安装 GPU 版本。
+      - torch==2.8.0
+      - torchvision==0.23.0
+
+      # matplotlib 交互式组件支持
+      - ipympl==0.9.7
+
+      # .h5 文件支持
+      - h5py==3.14.0
+
+      # PIL 或亦称 pillow
+      - pillow==11.3.0
+
+      # 从本地来源安装
+      - --find-links ./build/opencv-nonfree/
+      - --find-links ./build/ultralytics-non-opencv/
+
+      # 安装包含 SURF 算法与非自由功能的预编译的 OpenCV。欲了解更多，请参阅[工作流的自述文件](/.github/workflows/README.md)。
+      - opencv-contrib-python-headless-nonfree
+
+      # 因为 Ultralytics 会安装 `opencv-python` 包，且会与`opencv-contrib-python`等其他版本的
+      # OpenCV 产生冲突。为解决该问题，预构建了 Wheel 并移除了 `opencv-python` 的依赖，以便手动安装
+      # OpenCV。
+      - ultralytics-non-opencv
+
+      # 使用清华大学开源软件镜像站
+      - -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple

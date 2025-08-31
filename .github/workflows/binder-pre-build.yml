@@ -1,0 +1,37 @@
+run-name: Build opencv-contrib-python wheel with non-free features and create PR
+
+on: 
+    push:
+        branches:
+            - binder-release
+    
+    workflow_dispatch:
+        inputs:
+            branch-to-build:
+                description: "Which branch, tag, commit do you want to build and push to ghcr.io:"
+                required: true
+                type: string
+                default: "binder-release"
+            
+jobs: 
+
+    build-image-and-push:
+
+        runs-on: Ubuntu-24.04
+        permissions:
+            packages: write
+        steps:
+
+            - name: Init Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: 3.9
+
+            - name: build and push
+              uses: jupyterhub/repo2docker-action@master
+              with:
+                DOCKER_USERNAME: ${{github.actor}}
+                DOCKER_PASSWORD: ${{secrets.GITHUB_TOKEN}}
+                DOCKER_REGISTRY: "ghcr.io"
+                IMAGE_NAME: "gaobobo/opencv-pytorch_machinevision"
+                MYBINDERORG_TAG: ${{inputs.branch-to-build}}
