@@ -27,6 +27,11 @@ jobs:
               with:
                 python-version: 3.9
 
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                ref: ${{ inputs.branch-to-build }}
+
             - name: build and push
               uses: jupyterhub/repo2docker-action@master
               with:
