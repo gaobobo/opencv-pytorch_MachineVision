@@ -51,6 +51,16 @@
 > 
 > 在Windows系统中，需要先启动`Anaconda Promote`，然后在弹出的终端内运行`conda`的命令。
 
+### 使用 Docker 部署
+
+使用下列命令拉取镜像：
+
+```shell
+docker pull ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
+```
+
+默认端口为 8888。
+
 ### 构建包
 
 #### opencv-contrib-python-headless-nonfree
@@ -150,6 +160,16 @@ Steps:
 > \[!IMPORTANT]
 >
 > On Windows, you need to first launch `Anaconda Prompt`, then run the `conda` commands in the terminal that opens.
+
+### Use Docker to Deploy
+
+Pull Docker image:
+
+```shell
+docker pull ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
+```
+
+The default port is 8888。
 
 ### Build Packages
 
