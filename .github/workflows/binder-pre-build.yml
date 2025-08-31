@@ -22,8 +22,13 @@ jobs:
             packages: write
         steps:
 
+            - name: Init Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: 3.9
+
             - name: build and push
-              uses: jupyterhub/repo2docker-action@0.2
+              uses: jupyterhub/repo2docker-action@master
               with:
                 DOCKER_USERNAME: ${{github.actor}}
                 DOCKER_PASSWORD: ${{secrets.GITHUB_TOKEN}}
