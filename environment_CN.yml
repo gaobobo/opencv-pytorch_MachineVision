@@ -38,15 +38,15 @@ dependencies:
 
       # 从本地来源安装
       - --find-links ./build/opencv-nonfree/
-      - --find-links ./build/ultralytics-non-opencv/
+      - --find-links ./build/ultralytics-non-opencv-torch/
 
       # 安装包含 SURF 算法与非自由功能的预编译的 OpenCV。欲了解更多，请参阅[工作流的自述文件](/.github/workflows/README.md)。
       - opencv-contrib-python-headless-nonfree
 
       # 因为 Ultralytics 会安装 `opencv-python` 包，且会与`opencv-contrib-python`等其他版本的
-      # OpenCV 产生冲突。为解决该问题，预构建了 Wheel 并移除了 `opencv-python` 的依赖，以便手动安装
+      # OpenCV 产生冲突。为解决该问题，预构建了 Wheel 并移除了 `opencv-python` 等的依赖，以便手动安装
       # OpenCV。
-      - ultralytics-non-opencv
+      - ultralytics-non-opencv-torch
 
       # 使用清华大学开源软件镜像站
       - -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
