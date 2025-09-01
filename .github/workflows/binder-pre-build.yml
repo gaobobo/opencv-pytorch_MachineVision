@@ -18,8 +18,6 @@ jobs:
         permissions:
             packages: write
             contents: write
-        env:
-          PIP_NO_CACHE_DIR: true
         steps:
 
             - name: Init Python
@@ -32,8 +30,8 @@ jobs:
               with:
                 ref: ${{inputs.branch-to-build}}
                 sparse-checkout: |
-                  build/
-                sparse-checkout-cone-mode: 'true'
+                  build/ultralytics-non-opencv/ultralytics*.whl
+                  build/opencv-nonfree/opencv_contrib_python_headless_nonfree-**-linux_x86_64.whl
 
             - name: Delete huge unnecessary tools folder
               run: |
