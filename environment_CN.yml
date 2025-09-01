@@ -34,6 +34,9 @@ dependencies:
       # PIL 或亦称 pillow
       - pillow==11.3.0
 
+      # 自动从本仓库克隆资源，而非压进 Docker 镜像以减少启动时间。
+      - nbgitpuller==1.2.2
+
       # 从本地来源安装
       - --find-links ./build/opencv-nonfree/
       - --find-links ./build/ultralytics-non-opencv/
