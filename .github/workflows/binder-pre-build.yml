@@ -20,9 +20,6 @@ jobs:
             contents: write
         steps:
 
-            - name: Delete huge unnecessary tools folder
-              run: rm -rf /opt/hostedtoolcache
-
             - name: Init Python
               uses: actions/setup-python@v5
               with:
@@ -33,8 +30,15 @@ jobs:
               with:
                 ref: ${{inputs.branch-to-build}}
                 sparse-checkout: |
-                  build/
-                sparse-checkout-cone-mode: 'true'
+                  build/ultralytics-non-opencv/ultralytics*.whl
+                  build/opencv-nonfree/opencv_contrib_python_headless_nonfree-**-linux_x86_64.whl
+                  binder/Dockerfile
+                sparse-checkout-cone-mode: 'false'
+
+            - name: Delete huge unnecessary tools folder
+              run: |
+                rm -rf /opt/hostedtoolcache
+                ls -l
 
             - name: build and push
               uses: jupyterhub/repo2docker-action@master
@@ -43,6 +47,5 @@ jobs:
                 DOCKER_PASSWORD: ${{secrets.GITHUB_TOKEN}}
                 DOCKER_REGISTRY: "ghcr.io"
                 IMAGE_NAME: "gaobobo/opencv-pytorch_machinevision"
-                MYBINDERORG_TAG: ${{ inputs.branch-to-build }}
                 BINDER_CACHE: true
                 COMMIT_MSG: "chore: add or update image dependence"
