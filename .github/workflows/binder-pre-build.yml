@@ -1,9 +1,6 @@
 run-name: Build opencv-contrib-python wheel with non-free features and create PR
 
 on: 
-    push:
-        branches:
-            - binder-release
     
     workflow_dispatch:
         inputs:
@@ -28,10 +25,10 @@ jobs:
               with:
                 python-version: 3.9
 
-            - name: Checkout repository
+            - name: Checkout this repo
               uses: actions/checkout@v4
               with:
-                ref: ${{ inputs.branch-to-build }}
+                ref: ${{inputs.branch-to-build}}
 
             - name: build and push
               uses: jupyterhub/repo2docker-action@master
