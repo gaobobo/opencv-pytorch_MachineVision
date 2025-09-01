@@ -32,7 +32,7 @@ jobs:
                 sparse-checkout: |
                   build/opencv-nonfree/opencv_contrib_python_headless_nonfree-*-linux_x86_64.whl
                   build/ultralytics-non-opencv/ultralytics_non_opencv-*.whl
-                  binder/
+                  binder/Dockerfile
                   environment.yml
                 sparse-checkout-cone-mode: 'false'
 
