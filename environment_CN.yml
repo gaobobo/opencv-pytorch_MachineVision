@@ -6,8 +6,9 @@
 
 name: opencv-pytorch_MachineVision
 channels:
-  - conda-forge
-  - defaults
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
 dependencies:
   - notebook==7.4.5
   - python==3.12
