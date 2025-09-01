@@ -20,6 +20,9 @@ jobs:
             contents: write
         steps:
 
+            - name: Delete huge unnecessary tools folder
+              run: rm -rf /opt/hostedtoolcache
+
             - name: Init Python
               uses: actions/setup-python@v5
               with:
