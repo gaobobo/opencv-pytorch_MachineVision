@@ -32,6 +32,7 @@ jobs:
                 sparse-checkout: |
                   build/ultralytics-non-opencv/ultralytics*.whl
                   build/opencv-nonfree/opencv_contrib_python_headless_nonfree-**-linux_x86_64.whl
+                  binder/Dockerfile
                 sparse-checkout-cone-mode: 'false'
 
             - name: Delete huge unnecessary tools folder
