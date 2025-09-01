@@ -88,14 +88,14 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 本仓库提供了简单的自动构建工作流。请参阅 [/.github/workflows/README.md](/.github/workflows/README.md)以了解如何使用 GitHub Actions 自动构建。
 
-#### ultralytics-non-opencv
+#### ultralytics-non-opencv-torch
 
 `ultralytics` 包为 YOLO 模型提供了全新的 CLI 与 Python API。不过，`ultralytics` 包默认会安装依赖`opencv-python`，这会和已有的其他版本的 `opencv-python` 冲突。
 
-因此，本仓库构建了不含 `opencv-python` 依赖的 `ultralytics` 包。使用下列命令安装：
+因此，本仓库构建了不含 `opencv-python` `torch` `torchvision` 依赖的 `ultralytics` 包。使用下列命令安装：
 
 ```shell
-pip install ultralytics-non-opencv --force-reinstall --no-index --find-links ./build/ultralytics-non-free/
+pip install ultralytics-non-opencv-torch --force-reinstall --no-index --find-links ./build/ultralytics-non-opencv-torch/
 ```
 
 别忘记安装你喜爱的 OpenCV 版本。当然，`opencv-contrib-python-headless-nonfree` 也可以：
@@ -122,7 +122,7 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 - 克隆 [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) 存储库。本仓库基于 `v8.3.136` 标签构建；
 - `cd` 至上述仓库目录
-- 使用`git apply <TO-THIS-REPO>/build/ultralytics-non-opencv.patch` 以修补。此时，代码库应与修改后的源码相同。
+- 使用`git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch.patch` 以修补。此时，代码库应与修改后的源码相同。
 
 ---
 
@@ -204,14 +204,14 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 This repository also provides a simple automated build workflow. Please refer to [/.github/workflows/README.md](/.github/workflows/README.md) for instructions on how to use GitHub Actions to build automatically.
 
-#### ultralytics-non-opencv
+#### ultralytics-non-opencv-torch
 
 The `ultralytics` package provides a new CLI and Python API for YOLO models. However, the default `ultralytics` package installs `opencv-python` as a dependency, which may conflict with other versions of `opencv-python` already installed.
 
-Therefore, this repository has built a version of the `ultralytics` package that does not include the `opencv-python` dependency. Install it using the following command:
+Therefore, this repository has built a version of the `ultralytics` package that does not include the `opencv-python` `torch` `torchvision` dependency. Install it using the following command:
 
 ```shell
-pip install ultralytics-non-opencv --force-reinstall --no-index --find-links ./build/ultralytics-non-free/
+pip install ultralytics-non-opencv-torch --force-reinstall --no-index --find-links ./build/ultralytics-non-opencv-torch/
 ```
 
 Don’t forget to install your favorite version of OpenCV. Of course, you can also use `opencv-contrib-python-headless-nonfree`:
@@ -238,4 +238,4 @@ The modified source code is provided in patch `.patch` form. To obtain the full 
 
 * Clone the [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) repository. This repository is built based on the `v8.3.136` tag.
 * `cd` to the cloned repository directory.
-* Apply the patch using `git apply <TO-THIS-REPO>/build/ultralytics-non-opencv.patch`. The codebase should now match the modified source.
+* Apply the patch using `git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch.patch`. The codebase should now match the modified source.
