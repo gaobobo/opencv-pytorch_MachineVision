@@ -30,9 +30,10 @@ jobs:
               with:
                 ref: ${{inputs.branch-to-build}}
                 sparse-checkout: |
-                  build/ultralytics-non-opencv/ultralytics*.whl
-                  build/opencv-nonfree/opencv_contrib_python_headless_nonfree-**-linux_x86_64.whl
-                  binder/Dockerfile
+                  build/opencv-nonfree/opencv_contrib_python_headless_nonfree-*-linux_x86_64.whl
+                  build/ultralytics-non-opencv/ultralytics_non_opencv-*.whl
+                  binder/
+                  environment.yml
                 sparse-checkout-cone-mode: 'false'
 
             - name: Delete huge unnecessary tools folder
