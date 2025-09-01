@@ -31,7 +31,7 @@ jobs:
                 ref: ${{inputs.branch-to-build}}
                 sparse-checkout: |
                   build/opencv-nonfree/opencv_contrib_python_headless_nonfree-*-linux_x86_64.whl
-                  build/ultralytics-non-opencv-torch'/ultralytics_non_opencv_torch-*.whl
+                  build/ultralytics-non-opencv-torch/ultralytics_non_opencv_torch-*.whl
                   binder/Dockerfile
                   environment.yml
                 sparse-checkout-cone-mode: 'false'
