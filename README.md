@@ -43,7 +43,7 @@
 - 安装[Anaconda](https://www.anaconda.com/download/success)或[miniconda](https://www.anaconda.com/download/success)；
 - `cd`到仓库根目录；
 - 打开命令行并运行`conda env create -f ./environment.yml`命令。这会新建名为`opencv-pytorch_MachineVision`的环境并安装所需依赖；
-- 使用`conda active opencv-pytorch_MachineVision`激活环境；
+- 使用`conda activate opencv-pytorch_MachineVision`激活环境；
 - 输入`ipython notebook`运行Jupyter Notebook；
 - 在弹出的浏览器窗口中，打开[index.ipynb](./index.ipynb)。
 
