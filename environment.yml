@@ -9,8 +9,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - notebook==7.4.5
   - python==3.12
+  - notebook==7.4.5
+  - nbgitpuller==1.2.2  # Auto clone repo support.
   - pip
   - pip:
       # All packages depend on the numpy need to install from the single source.
