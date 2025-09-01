@@ -20,6 +20,7 @@ jobs:
         runs-on: Ubuntu-24.04
         permissions:
             packages: write
+            contents: write
         steps:
 
             - name: Init Python
@@ -39,4 +40,6 @@ jobs:
                 DOCKER_PASSWORD: ${{secrets.GITHUB_TOKEN}}
                 DOCKER_REGISTRY: "ghcr.io"
                 IMAGE_NAME: "gaobobo/opencv-pytorch_machinevision"
-                MYBINDERORG_TAG: ${{inputs.branch-to-build}}
+                MYBINDERORG_TAG: ${{ inputs.branch-to-build }}
+                BINDER_CACHE: true
+                COMMIT_MSG: "chore: add or update image dependence"
