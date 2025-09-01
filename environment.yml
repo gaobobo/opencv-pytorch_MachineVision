@@ -35,10 +35,6 @@ dependencies:
       # PIL or pillow
       - pillow==11.3.0
 
-      # Auto clone assets from this repo not zip-in docker image to
-      # reduce startup time.
-      - nbgitpuller==1.2.2
-
       # Install from the local source.
       - --find-links ./build/opencv-nonfree/
       - --find-links ./build/ultralytics-non-opencv/
