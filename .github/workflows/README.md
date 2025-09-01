@@ -102,7 +102,7 @@ Ultralytics 包为 YOLO 模型提供了完整的解决方案，包括训练、�
 Ultralytics 包需要依赖 `opencv-python`。不过，在实际使用与服务器部署中，更加常用`opencv-contrib-python` 和 `opencv-contrib-python-headless`。这会导致在安装 `ultralytics` 包时，可能会安装多个不同版本的 OpenCV 并可能导致冲突。
 
 Ultralytics 提供了几种[可行的解决方案](https://docs.ultralytics.com/zh/quickstart/#custom-installation-methods)。
-本仓库包含了移除 `opencv-python` 依赖的 `ultralytics` 二进制单文件Wheel，只需要从本地源安装：
+本仓库包含了移除 `opencv-python` `torch` `torchvision` 依赖的 `ultralytics` 二进制单文件Wheel，只需要从本地源安装：
 
 ```shell
 pip install ultralytics-non-opencv --find-links /build/ultralytics-non-opencv/
@@ -259,7 +259,7 @@ The Ultralytics package provides a complete solution for YOLO models, including 
 The Ultralytics package requires dependency on `opencv-python`. However, in actual use and server deployment, `opencv-contrib-python` and `opencv-contrib-python-headless` are more commonly used. This can cause installation of multiple different versions of OpenCV when installing the `ultralytics` package and may lead to conflicts.
 
 Ultralytics provides several [viable solutions](https://docs.ultralytics.com/zh/quickstart/#custom-installation-methods).
-This repository contains `ultralytics` binary single-file wheels with `opencv-python` dependency removed, which only need to be installed from a local source:
+This repository contains `ultralytics` binary single-file wheels with `opencv-python` `torch` `torchvision` dependency removed, which only need to be installed from a local source:
 
 ```shell
 pip install ultralytics-non-opencv --find-links /build/ultralytics-non-opencv/
