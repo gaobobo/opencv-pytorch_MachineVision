@@ -18,6 +18,10 @@
 提供了在线运行的环境。访问 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
 后，等待构建完成，完成后会自动打开Jupyter Notebook窗口。
 
+> [!IMPORTANT]
+> 
+> 默认不安装 PyTorch，原因是 Binder 服务器没有提供 GPU 不适合进行深度学习任务。
+
 ### 本地运行
 
 若要在本地运行，需要克隆仓库并安装依赖。本仓库根目录提供了 Conda 环境配置[environment.yml](./environment.yml)，你可使用
@@ -46,6 +50,7 @@
 - 使用`conda activate opencv-pytorch_MachineVision`激活环境；
 - 输入`ipython notebook`运行Jupyter Notebook；
 - 在弹出的浏览器窗口中，打开[index.ipynb](./index.ipynb)。
+- 默认不安装 PyTorch，请在[PyTorch官网](https://pytorch.org/get-started/locally/)上选择适合的架构重新安装。
 
 > [!IMPORTANT]
 > 
@@ -60,6 +65,12 @@ docker pull ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
 ```
 
 默认端口为 8888。
+
+此后，需要手动克隆仓库抑或是直接通过 `nbgitpuller` 自动拉取：
+
+```text
+http://<HOST>:<PORT>/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgaobobo%2Fopencv-pytorch_MachineVision&urlpath=lab%2Ftree%2Fopencv-pytorch_MachineVision%2Findex.ipynb&branch=binder-release
+```
 
 ### 构建包
 
@@ -130,6 +141,10 @@ Additionally, the repository offers an interactive environment via Binder. You c
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
 An online running environment is provided. After accessing [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb), wait for the build to finish. Once completed, the Jupyter Notebook window will open automatically.
 
+[!IMPORTANT]
+
+PyTorch is not installed by default, because Binder servers do not provide GPUs and are not suitable for deep learning tasks.
+
 ### Run Locally
 
 To run locally, you need to clone the repository and install dependencies. The root directory of this repository provides a Conda environment configuration in [environment.yml](./environment.yml), which you can use to create the environment with the command:
@@ -156,6 +171,8 @@ Steps:
 * Use `conda activate opencv-pytorch_MachineVision` to activate the environment.
 * Enter `ipython notebook` to run Jupyter Notebook.
 * In the browser window that opens, open [index.ipynb](./index.ipynb).
+* PyTorch is not installed by default, please visit [PyTorch Official](https://pytorch.org/get-started/locally/)
+  to install properly version.
 
 > \[!IMPORTANT]
 >
