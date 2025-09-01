@@ -59,7 +59,13 @@
 docker pull ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
 ```
 
-默认端口为 8888。
+默认端口为 8888。之后，你需要替换 `<JUPYTER-SERVER>` 为实际地址并访问：
+
+```txt
+<JUPYTER-SERVER>/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgaobobo%2Fopencv-pytorch_MachineVision.git&urlpath=lab%2Ftree%2Fopencv-pytorch_MachineVision.git%2Findex.ipynb&branch=binder-release
+```
+
+来自动化克隆仓库。本仓库大小约 600MB。
 
 ### 构建包
 
