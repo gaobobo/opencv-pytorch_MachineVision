@@ -4,18 +4,18 @@
 >
 > For English, see the [second-half part](#machine-vision---opencv-pytorch)
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)
 
 本仓库包含机器视觉作业 Jupyter Notebook 并保留了全部的运行结果，你可直接在线预览笔记本。
 
-本仓库另提供了一在线运行环境 Binder 以满足交互式探索，你可直接点击[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)以访问，或在[index.ipynb](./index.ipynb)打开特定章节的笔记本。
+本仓库另提供了一在线运行环境 Binder 以满足交互式探索，你可直接点击[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)以访问，或在[index.ipynb](./index.ipynb)打开特定章节的笔记本。
 
 ## 构建与运行
 
 ### 在线运行
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
-提供了在线运行的环境。访问 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)
+提供了在线运行的环境。访问 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)
 后，等待构建完成，完成后会自动打开Jupyter Notebook窗口。
 
 > [!IMPORTANT]
@@ -128,18 +128,18 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 # Machine Vision - OpenCV, PyTorch
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)
 
 This repository contains machine vision assignments in Jupyter Notebook format, with all execution results preserved. You can preview the notebook directly online.
 
-Additionally, the repository offers an interactive environment via Binder. You can access it directly by clicking on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb), or open specific sections of the notebook in [index.ipynb](./index.ipynb).
+Additionally, the repository offers an interactive environment via Binder. You can access it directly by clicking on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain), or open specific sections of the notebook in [index.ipynb](./index.ipynb).
 
 ## Build and Run
 
 ### Run Online
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb)
-An online running environment is provided. After accessing [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/binder-release?urlpath=%2Fdoc%2Ftree%2Findex.ipynb), wait for the build to finish. Once completed, the Jupyter Notebook window will open automatically.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain)
+An online running environment is provided. After accessing [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gaobobo/opencv-pytorch_MachineVision/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fgaobobo%252Fopencv-pytorch_MachineVision%26urlpath%3Dlab%252Ftree%252Fopencv-pytorch_MachineVision%252Findex.ipynb%26branch%3Dmain), wait for the build to finish. Once completed, the Jupyter Notebook window will open automatically.
 
 [!IMPORTANT]
 
