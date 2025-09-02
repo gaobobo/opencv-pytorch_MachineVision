@@ -57,6 +57,7 @@ jobs:
                 sed -i '/^[[:space:]]*"torch>=.*",$/d' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"torch>=.*,!=.*; sys_platform == '\''win32'\''",/d' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"torchvision>=.*",$/d' ultralytics/pyproject.toml
+                sed -i '/ultralytics-thop>=2.0.0/d' ultralytics/pyproject.toml
                 
                 pip install --upgrade pip
                 pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
