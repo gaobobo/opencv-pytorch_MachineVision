@@ -55,7 +55,7 @@ jobs:
                 sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv-torch"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"torch>=.*",$/d' ultralytics/pyproject.toml
-                sed -i '/^[[:space:]]*"torch>=.*",!=.*; sys_platform == 'win32'$/d' ultralytics/pyproject.toml
+                sed -i '/^[[:space:]]*"torch>=.*,!=.*; sys_platform == '\''win32'\''",/d' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"torchvision>=.*",$/d' ultralytics/pyproject.toml
                 
                 pip install --upgrade pip

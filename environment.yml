@@ -37,8 +37,8 @@ dependencies:
       - pillow==11.3.0
 
       # Install from the local source.
-      - --find-links ./build/opencv-nonfree-torch/
-      - --find-links ./build/ultralytics-non-opencv/
+      - --find-links ./build/opencv-nonfree/
+      - --find-links ./build/ultralytics-non-opencv-torch/
 
       # Install OpenCV with SURF and non-free features that pre-build. For more
       # information, visit (workflows readme)[/.github/workflows/README.md] .
