@@ -116,7 +116,7 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 - 克隆 [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) 存储库。本仓库基于 `v8.3.136` 标签构建；
 - `cd` 至上述仓库目录
-- 使用`git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch.patch` 以修补。此时，代码库应与修改后的源码相同。
+- 使用`git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch/ultralytics-non-opencv-torch.patch` 以修补。此时，代码库应与修改后的源码相同。
 
 ---
 
