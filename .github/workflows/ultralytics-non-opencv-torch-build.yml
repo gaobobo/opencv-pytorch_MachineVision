@@ -1,4 +1,4 @@
-run-name: Build ultralytics with non-opencv dependence and create PR
+run-name: Build ultralytics with non-opencv-torch dependence and create PR
 
 on: 
     workflow_dispatch:
@@ -10,10 +10,10 @@ on:
                 default: "v8.3.186"
             
             save-path:
-                description: "The path relative this repo that python wheels save to, like build/ultralytics-non-opencv/"
+                description: "The path relative this repo that python wheels save to, like build/ultralytics-non-opencv-torch/"
                 required: true
                 type: string
-                default: "build/ultralytics-non-opencv/"
+                default: "build/ultralytics-non-opencv-torch/"
 
             python-version:
                 description: "python version that build environment, like 3.9 or 3.12"
@@ -52,14 +52,18 @@ jobs:
 
             - name: Build ultralytics
               run: |
-                sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv"/' ultralytics/pyproject.toml
+                sed -i 's/^name = "ultralytics"/name = "ultralytics-non-opencv-torch"/' ultralytics/pyproject.toml
                 sed -i '/^[[:space:]]*"opencv-python>=.*",$/d' ultralytics/pyproject.toml
+                sed -i '/^[[:space:]]*"torch>=.*",$/d' ultralytics/pyproject.toml
+                sed -i '/^[[:space:]]*"torch>=.*,!=.*; sys_platform == '\''win32'\''",/d' ultralytics/pyproject.toml
+                sed -i '/^[[:space:]]*"torchvision>=.*",$/d' ultralytics/pyproject.toml
+                sed -i '/ultralytics-thop>=2.0.0/d' ultralytics/pyproject.toml
                 
                 pip install --upgrade pip
                 pip wheel ${GITHUB_WORKSPACE}/ultralytics/ --verbose --wheel-dir ${GITHUB_WORKSPACE}/main_repo/${{inputs.save-path}} --no-deps
                 
                 git -C ultralytics/ add --all
-                git -C ultralytics/ diff --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv.patch
+                git -C ultralytics/ diff --cached > main_repo/${{inputs.save-path}}/ultralytics-non-opencv-torch.patch
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7

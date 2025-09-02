@@ -38,7 +38,7 @@ dependencies:
 
       # Install from the local source.
       - --find-links ./build/opencv-nonfree/
-      - --find-links ./build/ultralytics-non-opencv/
+      - --find-links ./build/ultralytics-non-opencv-torch/
 
       # Install OpenCV with SURF and non-free features that pre-build. For more
       # information, visit (workflows readme)[/.github/workflows/README.md] .
@@ -46,6 +46,6 @@ dependencies:
 
       # Because Ultralytics will install `opencv-python`, and this may cause conflict
       # with `opencv-contrib-python` and any other OpenCV version. To solve this, use
-      # pre-build wheels that remove `opencv-python` dependence, and install OpenCV
+      # pre-build wheels that remove `opencv-python` and more dependence, and install OpenCV
       # manually.
-      - ultralytics-non-opencv
+      - ultralytics-non-opencv-torch

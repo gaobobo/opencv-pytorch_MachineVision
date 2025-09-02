@@ -102,10 +102,10 @@ Ultralytics 包为 YOLO 模型提供了完整的解决方案，包括训练、�
 Ultralytics 包需要依赖 `opencv-python`。不过，在实际使用与服务器部署中，更加常用`opencv-contrib-python` 和 `opencv-contrib-python-headless`。这会导致在安装 `ultralytics` 包时，可能会安装多个不同版本的 OpenCV 并可能导致冲突。
 
 Ultralytics 提供了几种[可行的解决方案](https://docs.ultralytics.com/zh/quickstart/#custom-installation-methods)。
-本仓库包含了移除 `opencv-python` 依赖的 `ultralytics` 二进制单文件Wheel，只需要从本地源安装：
+本仓库包含了移除 `opencv-python` `torch` `torchvision` 依赖的 `ultralytics` 二进制单文件Wheel，只需要从本地源安装：
 
 ```shell
-pip install ultralytics-non-opencv --find-links /build/ultralytics-non-opencv/
+pip install ultralytics-non-opencv-torch --find-links /build/ultralytics-non-opencv-torch/
 ```
 
 其中：
@@ -116,7 +116,7 @@ pip install ultralytics-non-opencv --find-links /build/ultralytics-non-opencv/
 
 并额外安装任意版本的 OpenCV：
 
-```
+```shell
 pip install opencv-python|opencv-python-headless|opencv-contrib-python|opencv-contrib-python-headless
 ```
 
@@ -128,13 +128,13 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 
 > [!NOTE]
 >
-> 本仓库的 `ultralytics-non-opencv` 包均由 GitHub Actions 自动构建。你可通过[审计提交](https://github.com/gaobobo/opencv-pytorch_MachineVision/pulls?q=is%3Apr+is%3Aclosed+author%3Aapp%2Fgithub-actions)、
+> 本仓库的 `ultralytics-non-opencv-torch` 包均由 GitHub Actions 自动构建。你可通过[审计提交](https://github.com/gaobobo/opencv-pytorch_MachineVision/pulls?q=is%3Apr+is%3Aclosed+author%3Aapp%2Fgithub-actions)、
 > [自行构建](#使用不包含-opencv-依赖的-ultralytics-包)、[参阅构建脚本](./)来确定安全性。
 
 ### 构建不包含 OpenCV 依赖的 Ultralytics 包
 
 - 首先，将下列文件置于仓库主分支的 `/.github/workflows` 下，并将更改推送至 GitHub：
-  - [ultralytics-non-opencv-build.yml](./ultralytics-non-opencv-build.yml)
+  - [ultralytics-non-opencv-build.yml](./ultralytics-non-opencv-torch-build.yml)
   
 > [!IMPORTANT]
 > 
@@ -143,7 +143,7 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 
 - 打开 GitHub 上的仓库设置（Settings）并允许 GitHub Actions 推送、修改分支（Actions > General > Workflow permissions > Allow
   GitHub Actions to create and approve pull requests）。
-- 打开 Actions 选项卡，在左侧选择工作流 `ultralytics-non-opencv-build.yml`。
+- 打开 Actions 选项卡，在左侧选择工作流 `ultralytics-non-opencv-torch-build.yml`。
 - 点击“Run Workflow”并设置：
   - Use workflow from: 使用哪一个分支的工作流。这也影响稍后创建的拉取请求合并到的分支；
   - Checkout ultralytics/ultralytics repos' ref：`ultralytics/ultralytics` 仓库所检出时的指针。支持分支名称、SHA、标签；
@@ -157,7 +157,7 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 > `ultralytics/ultralytics` 仓库使用的是 [AGPL-3.0 许可](https://github.com/ultralytics/ultralytics/blob/main/LICENSE)。
 > 这可能要求必须以相同的许可分发包含该库或其衍生作品的源码与修改。
 >
-> 本脚本在构建时会引入一[补丁](/build/ultralytics-non-opencv/ultralytics-non-opencv.patch)，
+> 本脚本在构建时会引入一[补丁](/build/ultralytics-non-opencv/ultralytics-non-opencv-torch.patch)，
 > 以满足 AGPL-3.0 许可的相关规定。
 
 ---
@@ -259,10 +259,10 @@ The Ultralytics package provides a complete solution for YOLO models, including 
 The Ultralytics package requires dependency on `opencv-python`. However, in actual use and server deployment, `opencv-contrib-python` and `opencv-contrib-python-headless` are more commonly used. This can cause installation of multiple different versions of OpenCV when installing the `ultralytics` package and may lead to conflicts.
 
 Ultralytics provides several [viable solutions](https://docs.ultralytics.com/zh/quickstart/#custom-installation-methods).
-This repository contains `ultralytics` binary single-file wheels with `opencv-python` dependency removed, which only need to be installed from a local source:
+This repository contains `ultralytics` binary single-file wheels with `opencv-python` `torch` `torchvision` dependency removed, which only need to be installed from a local source:
 
 ```shell
-pip install ultralytics-non-opencv --find-links /build/ultralytics-non-opencv/
+pip install ultralytics-non-opencv-torch --find-links /build/ultralytics-non-opencv-torch/
 ```
 
 Where:
@@ -285,13 +285,13 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 
 > [!NOTE]
 >
-> All `ultralytics-non-opencv` packages in this repository are automatically built by GitHub Actions. You can verify security by [auditing commits](https://github.com/gaobobo/opencv-pytorch_MachineVision/pulls?q=is%3Apr+is%3Aclosed+author%3Aapp%2Fgithub-actions),
+> All `ultralytics-non-opencv-torch` packages in this repository are automatically built by GitHub Actions. You can verify security by [auditing commits](https://github.com/gaobobo/opencv-pytorch_MachineVision/pulls?q=is%3Apr+is%3Aclosed+author%3Aapp%2Fgithub-actions),
 > [building yourself](#using-ultralytics-packages-without-opencv-dependencies), or [reviewing build scripts](./).
 
 ### Building Ultralytics Packages without OpenCV Dependencies
 
 - First, place the following file under `/.github/workflows` in the main branch of your repository and push the changes to GitHub:
-  - [ultralytics-non-opencv-build.yml](./ultralytics-non-opencv-build.yml)
+  - [ultralytics-non-opencv-torch-build.yml](./ultralytics-non-opencv-torch-build.yml)
   
 > [!IMPORTANT]
 > 
@@ -313,5 +313,5 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 > The `ultralytics/ultralytics` repository uses [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
 > This may require distributing source code and modifications of any work containing this library or its derivatives under the same license.
 >
-> This script introduces a [patch](/build/ultralytics-non-opencv/ultralytics-non-opencv.patch) during building
+> This script introduces a [patch](/build/ultralytics-non-opencv/ultralytics-non-opencv-torch.patch) during building
 > to comply with AGPL-3.0 license requirements.

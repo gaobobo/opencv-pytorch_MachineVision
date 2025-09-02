@@ -1,5 +1,5 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index f46b5f8..b1ec7ce 100644
+index f46b5f8..bb2ff2c 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -24,7 +24,7 @@ build-backend = "setuptools.build_meta"
@@ -7,11 +7,11 @@ index f46b5f8..b1ec7ce 100644
  # Project settings -----------------------------------------------------------------------------------------------------
  [project]
 -name = "ultralytics"
-+name = "ultralytics-non-opencv"
++name = "ultralytics-non-opencv-torch"
  dynamic = ["version"]
  description = "Ultralytics YOLO 🚀 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
  readme = "README.md"
-@@ -63,7 +63,6 @@ classifiers = [
+@@ -63,18 +63,13 @@ classifiers = [
  dependencies = [
      "numpy>=1.23.0",
      "matplotlib>=3.3.0",
@@ -19,3 +19,14 @@ index f46b5f8..b1ec7ce 100644
      "pillow>=7.1.2",
      "pyyaml>=5.3.1",
      "requests>=2.23.0",
+     "scipy>=1.4.1",
+-    "torch>=1.8.0",
+-    "torch>=1.8.0,!=2.4.0; sys_platform == 'win32'", # Windows CPU errors w/ 2.4.0 https://github.com/ultralytics/ultralytics/issues/15049
+-    "torchvision>=0.9.0",
+     "psutil", # system utilization
+     "py-cpuinfo", # display CPU info
+     "pandas>=1.1.4",
+-    "ultralytics-thop>=2.0.0", # FLOPs computation https://github.com/ultralytics/thop
+ ]
+ 
+ # Optional dependencies ------------------------------------------------------------------------------------------------
