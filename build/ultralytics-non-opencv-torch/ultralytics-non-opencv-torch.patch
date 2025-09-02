@@ -1,5 +1,5 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index f46b5f8..453dead 100644
+index f46b5f8..bb2ff2c 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -24,7 +24,7 @@ build-backend = "setuptools.build_meta"
@@ -11,7 +11,7 @@ index f46b5f8..453dead 100644
  dynamic = ["version"]
  description = "Ultralytics YOLO 🚀 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
  readme = "README.md"
-@@ -63,14 +63,10 @@ classifiers = [
+@@ -63,18 +63,13 @@ classifiers = [
  dependencies = [
      "numpy>=1.23.0",
      "matplotlib>=3.3.0",
@@ -26,3 +26,7 @@ index f46b5f8..453dead 100644
      "psutil", # system utilization
      "py-cpuinfo", # display CPU info
      "pandas>=1.1.4",
+-    "ultralytics-thop>=2.0.0", # FLOPs computation https://github.com/ultralytics/thop
+ ]
+ 
+ # Optional dependencies ------------------------------------------------------------------------------------------------
