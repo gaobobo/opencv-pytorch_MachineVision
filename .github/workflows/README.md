@@ -157,7 +157,7 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 > `ultralytics/ultralytics` 仓库使用的是 [AGPL-3.0 许可](https://github.com/ultralytics/ultralytics/blob/main/LICENSE)。
 > 这可能要求必须以相同的许可分发包含该库或其衍生作品的源码与修改。
 >
-> 本脚本在构建时会引入一[补丁](/build/ultralytics-non-opencv/ultralytics-non-opencv-torch.patch)，
+> 本脚本在构建时会引入一[补丁](/build/ultralytics-non-opencv-torch/ultralytics-non-opencv-torch.patch)，
 > 以满足 AGPL-3.0 许可的相关规定。
 
 ---
@@ -313,5 +313,5 @@ pip install opencv-contrib-python-headless-nonfree --find-links /build/opencv-no
 > The `ultralytics/ultralytics` repository uses [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
 > This may require distributing source code and modifications of any work containing this library or its derivatives under the same license.
 >
-> This script introduces a [patch](/build/ultralytics-non-opencv/ultralytics-non-opencv-torch.patch) during building
+> This script introduces a [patch](/build/ultralytics-non-opencv-torch/ultralytics-non-opencv-torch.patch) during building
 > to comply with AGPL-3.0 license requirements.
