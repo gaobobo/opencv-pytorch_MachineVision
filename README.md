@@ -66,12 +66,6 @@ docker pull ghcr.io/gaobobo/opencv-pytorch_machinevision:latest
 
 默认端口为 8888。
 
-此后，需要手动克隆仓库抑或是直接通过 `nbgitpuller` 自动拉取：
-
-```text
-http://<HOST>:<PORT>/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgaobobo%2Fopencv-pytorch_MachineVision&urlpath=lab%2Ftree%2Fopencv-pytorch_MachineVision%2Findex.ipynb&branch=binder-release
-```
-
 ### 构建包
 
 #### opencv-contrib-python-headless-nonfree
