@@ -114,7 +114,7 @@ pip install opencv-contrib-python-headless --force-reinstall --no-index --find-l
 
 本仓库以补丁 `.patch` 的形式提供源码。预想获取完整源码：
 
-- 克隆 [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) 存储库。本仓库基于 `v8.3.136` 标签构建；
+- 克隆 [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) 存储库。本仓库基于 `v8.3.136` 标签（`dd798f851ab690234a0fc28c0f51d3ef8a93e3fb`）构建；
 - `cd` 至上述仓库目录
 - 使用`git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch/ultralytics-non-opencv-torch.patch` 以修补。此时，代码库应与修改后的源码相同。
 
@@ -230,6 +230,6 @@ According to the [AGPL-3.0 License](https://github.com/ultralytics/ultralytics/b
 
 The modified source code is provided in patch `.patch` form. To obtain the full source code:
 
-* Clone the [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) repository. This repository is built based on the `v8.3.136` tag.
+* Clone the [ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) repository. This repository is built based on the `v8.3.136` tag (`dd798f851ab690234a0fc28c0f51d3ef8a93e3fb`).
 * `cd` to the cloned repository directory.
 * Apply the patch using `git apply <TO-THIS-REPO>/build/ultralytics-non-opencv-torch.patch`. The codebase should now match the modified source.
